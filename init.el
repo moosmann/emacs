@@ -26,19 +26,19 @@
 ;-----------------------;
 ;;; Emacs custom file ;;;
 ;-----------------------;
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file "~/.emacs.d/settings/custom.el")
 (load custom-file)
 
 ;-----------;
 ;;; LaTeX ;;;
 ;-----------;
-(setq latex-file "~/.emacs.d/latex.el")
+(setq latex-file "~/.emacs.d/settings/latex.el")
 (load latex-file)
 
 ;------------;
 ;;; Python ;;;
 ;------------;
-(setq python-file "~/.emacs.d/python.el")
+(setq python-file "~/.emacs.d/settings/python.el")
 (load python-file)
 
 ;---------------;
