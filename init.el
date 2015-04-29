@@ -115,12 +115,15 @@
 
 
 ;;; Auto Complete
-;; (add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1")
+;; install from MELPA archive via package.el
+;; M-x package-install [RET] auto-complete [RET]
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20150408.1132")
 (require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20150408.1132/dict")
 (require 'auto-complete-config)
 (ac-config-default)
 (global-auto-complete-mode t)
+
 
 ;;; Fill-Column Indicator
 (add-to-list 'load-path "~/.emacs.d/plugins/fill-column-indicator")
@@ -149,6 +152,31 @@
 ; highlight parentheses when the cursor is next to them
 (require 'paren)
 (show-paren-mode t)
+
+;----------;
+;;; ELPA ;;;
+;----------;
+;; ELPA is the Emacs Lisp Package Archive, written originally by TomTromey. It is included in GnuEmacs, starting with version 24. package.el is the package manager library for ELPA. 
+;; see http://emacswiki.org/emacs/ELPA
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
+
+
+;-----------;
+;;; MELPA ;;;
+;-----------;
+;; To use the MELPA repository, you'll need an Emacs with package.el. Emacs 24 has package.el bundled with it
+;; Enable installation of packages from MELPA by adding an entry to package-archives after (require 'package) and before the call to package-initialize in your init.el or .emacs file: 
+;; see http://melpa.org/#/
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+
 
 ;-----------------------;
 ;;; Emacs custom file ;;;
