@@ -1,3 +1,6 @@
+;--------------------;
+;;; User Interface ;;;
+;--------------------;
 
 ;;; Remove start up splash screen
 (setq inhibit-splash-screen t)
@@ -17,82 +20,10 @@
 ;;; Add short cut for other-window
 (global-set-key [f6] 'other-window)
 
-(add-to-list 'load-path "~/.emacs.d/")
-
-;;; Interactively Do Things
-(require 'ido)
-(ido-mode t)
-
-;-----------------------;
-;;; Emacs custom file ;;;
-;-----------------------;
-(setq custom-file "~/.emacs.d/settings/custom.el")
-(load custom-file)
-
-;-----------;
-;;; LaTeX ;;;
-;-----------;
-(setq latex-file "~/.emacs.d/settings/latex.el")
-(load latex-file)
-
-;------------;
-;;; Python ;;;
-;------------;
-(setq python-file "~/.emacs.d/settings/python.el")
-(load python-file)
-
-;---------------;
-;;; Functions ;;;
-;---------------;
-
-;;; Count words function
-;; source: xemacs 20.3
-(defun count-words-region (start end)
-   (interactive "r")
-   (save-excursion
-      (let ((n 0))
-       (goto-char start)
-       (while (< (point) end)
-         (if (forward-word 1)
-             (setq n (1+ n))))
-       (message "Region has %d words" n)
-       n)))
-;; add alias for word-count
-(defalias 'word-count 'count-words-region)
-;; (defun count-words (start end)
-;;   "Print number of words in the region."
-;;   (interactive "r")
-;;   (save-excursion
-;;     (save-restriction
-;;       (narrow-to-region start end)
-;;       (goto-char (point-min))
-;;       (count-matches "\\sw+"))))
-
-
-
-;;; Following configs is taken from:
+;;; What follows is largely taken form:
 ;;; http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/
 
-
-;;; Auto Complete
-;; (add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1")
-(require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(require 'auto-complete-config)
-(ac-config-default)
-(global-auto-complete-mode t)
-
-;;; Fill-Column Indicator
-(add-to-list 'load-path "~/.emacs.d/plugins/fill-column-indicator")
-(require 'fill-column-indicator)
-(define-globalized-minor-mode
- global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode t)
-
-
-;--------------------;
-;;; User Interface ;;;
-;--------------------;
+(add-to-list 'load-path "~/.emacs.d/")
 
 ; always use spaces, not tabs, when indenting
 (setq indent-tabs-mode nil)
@@ -103,6 +34,9 @@
 ; require final newlines in files when they are saved
 (setq require-final-newline t)
 
+; language
+(setq current-language-environment "English")
+
 ;; ; window modifications
 ;; (global-set-key (kbd "S-C-") 'shrink-window-horizontally)
 ;; (global-set-key (kbd "S-C-") 'enlarge-window-horizontally)
@@ -112,12 +46,14 @@
 ; set the keybinding so that you can use f4 for goto line
 ;(global-set-key &#91;f4&#93; 'goto-line)
 
+;;; Interactively Do Things
+(require 'ido)
+(ido-mode t)
+
+
 ;----------------------;
 ;;; Windows & Frames ;;;
 ;----------------------;
-
-; language
-(setq current-language-environment "English")
 
 ; don't show the startup screen
 ;(setq inhibit-startup-screen t)
@@ -177,6 +113,23 @@
 (require 'mwheel)
 (mouse-wheel-mode t)
 
+
+;;; Auto Complete
+;; (add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1")
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+
+;;; Fill-Column Indicator
+(add-to-list 'load-path "~/.emacs.d/plugins/fill-column-indicator")
+(require 'fill-column-indicator)
+(define-globalized-minor-mode
+ global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode t)
+
+
 ;-------------------------;
 ;;; Syntax Highlighting ;;;
 ;-------------------------;
@@ -196,6 +149,52 @@
 ; highlight parentheses when the cursor is next to them
 (require 'paren)
 (show-paren-mode t)
+
+;-----------------------;
+;;; Emacs custom file ;;;
+;-----------------------;
+(setq custom-file "~/.emacs.d/settings/custom.el")
+(load custom-file)
+
+;-----------;
+;;; LaTeX ;;;
+;-----------;
+(setq latex-file "~/.emacs.d/settings/latex.el")
+(load latex-file)
+
+;------------;
+;;; Python ;;;
+;------------;
+(setq python-file "~/.emacs.d/settings/python.el")
+(load python-file)
+
+;---------------;
+;;; Functions ;;;
+;---------------;
+
+;;; Count words function
+;; source: xemacs 20.3
+(defun count-words-region (start end)
+   (interactive "r")
+   (save-excursion
+      (let ((n 0))
+       (goto-char start)
+       (while (< (point) end)
+         (if (forward-word 1)
+             (setq n (1+ n))))
+       (message "Region has %d words" n)
+       n)))
+;; add alias for word-count
+(defalias 'word-count 'count-words-region)
+;; (defun count-words (start end)
+;;   "Print number of words in the region."
+;;   (interactive "r")
+;;   (save-excursion
+;;     (save-restriction
+;;       (narrow-to-region start end)
+;;       (goto-char (point-min))
+;;       (count-matches "\\sw+"))))
+
 
 ;-----------------;
 ;;; Color Theme ;;;
