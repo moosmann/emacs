@@ -113,6 +113,10 @@
 (require 'mwheel)
 (mouse-wheel-mode t)
 
+; E.g. when following error occurs:
+; File error: Cannot open load file, popup
+(setq package-user-dir "~/.emacs.d/elpa/")
+(package-initialize)
 
 ;;; Auto Complete
 ;; install from MELPA archive via package.el
