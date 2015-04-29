@@ -8,4 +8,5 @@
 .cask
 
 # Individual files
+ac-comphist.dat
 batchByteComplieCurDirAndSubdir.txt
