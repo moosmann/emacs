@@ -1,8 +1,20 @@
 ;;; Python Environment
 ; python-mode
-;;(setq py-install-directory "~/.emacs.d/python-mode-6.0.11")
-;;(add-to-list 'load-path py-install-directory)
+(setq py-install-directory "~/.emacs.d/plugins/python-mode.el-6.2.0")
+(add-to-list 'load-path py-install-directory)
 (require 'python-mode)
+
+
+;; To change the Python default shell use 
+;;M-x customize-variable py-shell-name 
+;; or insert following lines in init.el or .emacs
+;;(setq py-shell-name "MY-PYTHON")
+;; e.g.
+;;(setq py-shell-name "ipython")
+;; or
+;;(setq py-shell-name "PATH/TO/MY-PYTHON")
+;; e.g.
+;;(setq py-shell-name "PATH/TO/ipython")
 
 ; use IPython
 (setq-default py-shell-name "ipython")
