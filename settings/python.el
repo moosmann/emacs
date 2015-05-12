@@ -10,19 +10,21 @@
 ;; or insert following lines in init.el or .emacs
 ;;(setq py-shell-name "MY-PYTHON")
 ;; e.g.
-;;(setq py-shell-name "ipython")
+(setq py-shell-name "/usr/local/bin/ipython")
 ;; or
 ;;(setq py-shell-name "PATH/TO/MY-PYTHON")
 ;; e.g.
 ;;(setq py-shell-name "PATH/TO/ipython")
 
 ; use IPython
-(setq-default py-shell-name "ipython")
-(setq-default py-which-bufname "IPython")
+(setq-default py-shell-name "/usr/local/bin/ipython")
+; py-which-bufname is an internal variable, kind of legacy. better 
+; don't touch
+;(setq-default py-which-bufname "IPython")
 ; use the wx backend, for both mayavi and matplotlib
-(setq py-python-command-args
-  '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
-(setq py-force-py-shell-name-p t)
+;(setq py-python-command-args
+;  '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+;(setq py-force-py-shell-name-p t)
 
 ; switch to the interpreter after executing code
 ;(setq py-shell-switch-buffers-on-execute-p t)
@@ -47,3 +49,29 @@
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
 
+
+;-------------------------;
+;;; Pylint thru flymake ;;;
+;-------------------------;
+
+;; Configure to wait a bit longer after edits before starting
+(setq-default flymake-no-changes-timeout '3)
+
+;; Keymaps to navigate to the errors
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)))
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)))
+
+
+;; To avoid having to mouse hover for the error message, these functions make flymake error messages
+;; appear in the minibuffer
+(defun show-fly-err-at-point ()
+  "If the cursor is sitting on a flymake error, display the message in the minibuffer"
+  (require 'cl)
+  (interactive)
+  (let ((line-no (line-number-at-pos)))
+    (dolist (elem flymake-err-info)
+      (if (eq (car elem) line-no)
+      (let ((err (car (second elem))))
+        (message "%s" (flymake-ler-text err)))))))
+
+(add-hook 'post-command-hook 'show-fly-err-at-point)

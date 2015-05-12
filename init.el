@@ -200,6 +200,11 @@
 (setq python-file "~/.emacs.d/settings/python.el")
 (load python-file)
 
+;-----------------------------;
+;;; C++ mode for CUDA files ;;;
+;-----------------------------;
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
+
 ;---------------;
 ;;; Functions ;;;
 ;---------------;
@@ -233,10 +238,10 @@
 ;-----------------;
 
 ; use the "Subtle Hacker" color theme as a base for the custom scheme
-(require 'color-theme)
-(color-theme-initialize)
-(setq color-theme-is-global t)
-(color-theme-subtle-hacker)
+;;(require 'color-theme)
+;;(color-theme-initialize)
+;;(setq color-theme-is-global t)
+;;(color-theme-subtle-hacker)
 
 ;; (custom-set-faces
 ;;  '(default ((t (:overline nil :inherit nil :stipple nil :background "gray2"
@@ -276,6 +281,6 @@
 ;;                           (:background "firebrick1")))))
 
 ; make sure the frames have the dark background mode by default
-(setq default-frame-alist (quote (
-  (frame-background-mode . dark)
-)))
+;;(setq default-frame-alist (quote (
+;;  (frame-background-mode . dark)
+;;)))
