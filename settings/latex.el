@@ -44,7 +44,7 @@
 ;;; Use pdflatex instead of latex to compile .tex files
 (setq TeX-PDF-mode t) 
 
-;;; compile using source specials 
+;;; compile using source specials, according 2010 manual
 ;;(setq LaTeX-command "latex -synctex=1")
 
 ;;; Tex Source Correlate Method
