@@ -5,6 +5,9 @@
 ;;; Remove start up splash screen
 (setq inhibit-splash-screen t)
 
+;;; Disable toolbar
+(tool-bar-mode -1)
+
 ;; Unbind Pesky Sleep Button
 (global-unset-key [(control z)])
 (global-unset-key [(control x)(control z)])

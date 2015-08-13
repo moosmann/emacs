@@ -47,14 +47,18 @@
 ;;; compile using source specials, according 2010 manual
 ;;(setq LaTeX-command "latex -synctex=1")
 
+;;; Following three need to be set via custom.el or via customize
+;;; Auctex (Extend this menu, Tex Command -> Tex Command -> Tex View)
+
 ;;; Tex Source Correlate Method
-(setq TeX-source-correlate-method "synctex")
+;(setq TeX-source-correlate-method "synctex")
 
 ;;; Tex Source Correlate Start Server
-(setq TeX-source-correlate-start-server "always")
+;(setq TeX-source-correlate-start-server "always")
 
 ;;; Toggle Tex Source Correlate Mode
-(setq TeX-source-correlate-mode t)
+;(setq TeX-source-correlate-mode t)
+
 
 ;;; Next to commands are set by entries created by
 ;;; emacs->customization->save, see below
