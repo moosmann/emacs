@@ -14,7 +14,7 @@
  '(TeX-source-correlate-method (quote synctex))
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
- '(TeX-view-program-list (quote (("Okular" "okular --unique %o#src:%n`pwd`/./%b") ("Acroread" "acroread %o"))))
+ '(TeX-view-program-list (quote (("Okular" "okular --unique %o#src:%n`pwd`/./%b") ("Acroread" "acroread %o") ("pdfpc" "pdfpc %o"))))
  '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi") (output-pdf "Okular") (output-html "xdg-open"))))
  '(flyspell-default-dictionary "en_GB")
  '(flyspell-tex-command-regexp "\\(\\(begin\\|end\\)[ 	]*{\\|\\(cite[a-z*]*\\|label\\|ref\\|eqref\\|usepackage\\|\\cref|documentclass\\)[ 	]*\\(\\[[^]]*\\]\\)?{[^{}]*\\)")
