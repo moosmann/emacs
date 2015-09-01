@@ -2,6 +2,13 @@
 ;;; User Interface ;;;
 ;--------------------;
 
+;;; Remove prompt for killing emacsclient buffers
+
+;; other option is to use the -n option with emacsclient so that it
+;; doesn't wait for the file to be edited before exiting. Eg,
+;; 'emacsclient -n myfile.txt'
+(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)*
+
 ;;; Remove start up splash screen
 (setq inhibit-splash-screen t)
 
